@@ -1,5 +1,38 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "name": "test project",
+      "budget": "10000",
+      "selected": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 1
+    },
+    {
+      "name": "teste",
+      "budget": "12322",
+      "selected": {
+        "id": "4",
+        "name": "Planning"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
+    },
+    {
+      "name": "Rafaela Fernanda Silva Inácio",
+      "selected": {
+        "id": "1",
+        "name": "Infrastructure"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    }
+  ],
   "categories": [
     {
       "id": 1,

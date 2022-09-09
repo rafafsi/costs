@@ -9,10 +9,14 @@ const Select = ({ text, name, options, handlenOnChange, value }) => {
                 htmlFor={name}>
                 {text}:
             </label>
-            <select name={name} id={name}>
+            <select
+                name={name}
+                id={name}
+                onChange={handlenOnChange}
+                value={value || ''}>
                 <option>Choose an option</option>
                 {options.map((option) => (
-                    <option value={option.id} key={option.id}> 
+                    <option value={option.id} key={option.id}>
                         {option.name}
                     </option>
                 ))}
