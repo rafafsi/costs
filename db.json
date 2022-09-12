@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "name": "bora porra",
+      "name": "Gil",
       "budget": "1000",
       "selected": {
         "id": "3",
@@ -12,26 +12,15 @@
       "id": 1
     },
     {
-      "name": "The Beatles",
-      "budget": "20000",
+      "name": "Rita Lee",
+      "budget": "2000",
       "selected": {
-        "id": "3",
-        "name": "Design"
+        "id": "2",
+        "name": "Development"
       },
       "cost": 0,
       "services": [],
       "id": 2
-    },
-    {
-      "name": "gilberto gil",
-      "budget": "20500",
-      "selected": {
-        "id": "3",
-        "name": "Design"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 3
     }
   ],
   "categories": [
