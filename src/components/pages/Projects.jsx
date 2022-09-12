@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
 import Container from '../layout/Container';
+import Loading from "../layout/Loading";
 import LinkButton from '../layout/LinkButton'
-
 import Message from "../layout/Message";
+
 import ProjectCard from "../project/ProjectCard";
 
 import styles from './Projects.module.css';
@@ -12,26 +13,45 @@ import styles from './Projects.module.css';
 const Projects = () => {
 
     const [projects, setProjects] = useState([]);
+    const [removeLoading, setRemoveLoading] = useState(false);
+    const [projectMessage, setProjectMessage] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/projects', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-                setProjects(data)
+        setTimeout(() => {
+            fetch('http://localhost:5000/projects', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
             })
-            .catch((error) => console.log(error))
+                .then((resp) => resp.json())
+                .then((data) => {
+                    setProjects(data)
+                    setRemoveLoading(true)
+                })
+                .catch((error) => console.log(error))
+        }, 300)
     }, [])
 
     const location = useLocation();
     let message = '';
     if (location.state) {
         message = location.state.message;
+    }
+
+    const removeProject = (id) => {
+        fetch(`http://localhost:5000/projects/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then((resp) => resp.json())
+            .then(() => {
+                setProjects(projects.filter((project) => project.id !== id));
+                setProjectMessage('Project deleted successfully!');
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -42,6 +62,7 @@ const Projects = () => {
                 <LinkButton to="/newproject" text="Create project" />
             </div>
             {message && <Message msg={message} type="success" />}
+            {projectMessage && <Message msg={projectMessage} type="success" />}
             <Container customClass="start">
                 {projects.length > 0 &&
                     projects.map((project) =>
@@ -50,7 +71,12 @@ const Projects = () => {
                             id={project.id}
                             budget={project.budget}
                             category={project.selected.name}
-                            key={project.id} />)}
+                            key={project.id}
+                            handleRemove={removeProject} />)}
+                {!removeLoading && <Loading />}
+                {removeLoading && projects.length === 0 && (
+                    <p>There are no projects registered!</p>
+                )}
             </Container>
         </div>
 

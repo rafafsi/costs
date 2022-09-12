@@ -10,7 +10,7 @@ const Message = ({ type, msg }) => {
     useEffect(() => {
         if(!msg) {
             setVisible(false)
-            return //finish everythinh
+            return //finish everything
         }
 
         setVisible(true) //if has msg, do all this stuff below

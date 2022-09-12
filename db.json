@@ -1,8 +1,8 @@
 {
   "projects": [
     {
-      "name": "test project",
-      "budget": "10000",
+      "name": "bora porra",
+      "budget": "1000",
       "selected": {
         "id": "3",
         "name": "Design"
@@ -12,21 +12,22 @@
       "id": 1
     },
     {
-      "name": "teste",
-      "budget": "12322",
+      "name": "The Beatles",
+      "budget": "20000",
       "selected": {
-        "id": "4",
-        "name": "Planning"
+        "id": "3",
+        "name": "Design"
       },
       "cost": 0,
       "services": [],
       "id": 2
     },
     {
-      "name": "Rafaela Fernanda Silva Inácio",
+      "name": "gilberto gil",
+      "budget": "20500",
       "selected": {
-        "id": "1",
-        "name": "Infrastructure"
+        "id": "3",
+        "name": "Design"
       },
       "cost": 0,
       "services": [],

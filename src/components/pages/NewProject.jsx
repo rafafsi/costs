@@ -8,26 +8,21 @@ import ProjectForm from '../project/ProjectForm'
 const NewProject = () => {
 
     const navigate = useNavigate();
-    
+
     const createPost = (project) => {
         project.cost = 0;
         project.services = [];
 
-        const initObj = {
+        fetch("http://localhost:5000/projects", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(project),
-        }
-
-        const request = new Request("http://localhost:5000/projects", initObj);
-
-        fetch(request)
+        })
             .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-                navigate('../projects', { state: { message: 'Project created successfully!'}});
+            .then(() => {
+                navigate('../projects', { state: { message: 'Project created successfully!' } });
             })
             .catch((error) => console.log(error))
     }
